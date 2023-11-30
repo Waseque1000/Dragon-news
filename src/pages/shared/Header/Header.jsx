@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../../../assets/logo.png";
 import moment from "moment";
 import { Button, Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import Marquee from "react-fast-marquee";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import { FaUser } from "react-icons/fa";
+import NavigationBar from "../Navigation/NavigationBar";
 
 const Header = () => {
   return (
     <Container>
       <div className="text-center mt-3 mb-3">
-        <img src={logo} alt="" />
+        <Link to={"/"}>
+          <img src={logo} alt="" />
+        </Link>
+
         <p className="mt-2">Journalism Without Fear or Favour</p>
         <p>{moment().format("dddd, MMMM D, YYYY")}</p>
       </div>
@@ -23,22 +30,6 @@ const Header = () => {
         </Marquee>
       </div>
       {/*  Navbar  */}
-      <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary mt-3">
-        <Container>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mx-auto">
-              <Nav.Link href="#features">Home </Nav.Link>
-              <Nav.Link href="#pricing">About </Nav.Link>
-              <Nav.Link href="#pricing">Career</Nav.Link>
-            </Nav>
-            <Nav>
-              <Nav.Link href="#deets">Profile</Nav.Link>
-              <Button variant="success">Log in</Button>{" "}
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
     </Container>
   );
 };
